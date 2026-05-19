@@ -1,0 +1,70 @@
+<div th:fragment="header">
+	
+	<!-- Header -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="brand">
+			<a href="index.html"><img src="/img/devLink-logo.png" alt="DevLink Logo" class="img-responsive logo"></a>
+		</div>
+		<div class="container-fluid">
+			<div id="navbar-menu">
+				<ul class="nav navbar-nav navbar-right">
+					
+					<!-- ログイン前 -->
+					<li th:if="${!login}">
+						<a href="#" data-toggle="modal" data-target="#loginModal">
+						    <i class="lnr lnr-power-switch"></i> <span>LOGIN</span>
+						</a>
+					</li>
+					
+					<!-- ログイン後 -->
+					<li th:if="${login}" class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+							<img src="/img/user.png" class="img-circle" alt="Avatar" style="width: 25px; height: 25px; object-fit: cover;">
+							<span style="margin-left: 8px;">バク　ジョンミン</span> 
+							<i class="icon-submenu lnr lnr-chevron-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							
+							<!-- 個人ユーザーメニュー -->
+							<th:block th:if="${role == 'USER'}">
+							<li><a href="/personal/"><i class="lnr lnr-user"></i> <span>会員情報</span></a></li>
+							<li><a href="/personal/"><i class="lnr lnr-inbox"></i> <span>応募状況</span></a></li>
+							<li>
+								<a href="/personal/" style="display: flex; align-items: center;">
+									<i class="lnr lnr-envelope"></i>
+									<span>メッセージ</span>
+									<span class="badge bg-danger" style="margin-left: auto;">5</span>
+								</a>
+							</li>
+							</th:block>
+							<!-- END 個人ユーザーメニュー -->
+							
+							<!-- 企業ユーザーメニュー -->
+							<th:block th:if="${role == 'COMPANY'}">
+								<li><a href="/company/"><i class="lnr lnr-briefcase"></i> <span>기업 대시보드(COMPANY)</span></a></li>
+								<li><a href="/company/"><i class="lnr lnr-pencil"></i> <span>구인 공고 등록</span></a></li>
+							</th:block>
+							<!-- END 企業ユーザーメニュー -->
+	
+							<!-- 管理者メニュー -->
+							<th:block th:if="${role == 'ADMIN'}">
+								<li><a href="/admin/"><i class="lnr lnr-cog"></i> <span>관리자 설정(ADMIN)</span></a></li>
+							</th:block>
+							<!-- END 管理者メニュー -->
+							
+							<li>
+								<a href="/logout">
+									<i class="lnr lnr-exit"></i> 
+									<span>ログアウト</span>
+								</a>
+							</li>
+	
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- End Header -->
+	
+</div>

@@ -1,0 +1,44 @@
+<div th:fragment="loginModal">
+	
+		<div class="modal fade" id="loginModal" tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered" style="max-width: 600px;">
+		    	<div class="modal-content" style="padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: none;">
+
+		      	<form action="/login" method="post" style="margin: 0;">
+
+				<div style="text-align: center; margin-bottom: 25px; margin-top: 15px;">
+				  <img src="/img/devLink-logo.png" alt="DevLink Logo" 
+				       style="width: 170px; height: auto; max-width: 100%; image-rendering: -webkit-optimize-contrast; object-fit: contain;">
+				</div>
+
+		        <div class="modal-body" style="padding: 0; margin-bottom: 30px;">
+		        	<div class="form-group">
+		            	<input type="text" name="id" class="form-control" placeholder="ユーザーID" 
+		                	   style="height: 50px; font-size: 16px; margin-bottom: 15px; border-radius: 6px;">
+		       		</div>
+		        <div class="form-group">
+		            <input type="password" name="pw" class="form-control" placeholder="パスワード" 
+		                   style="height: 50px; font-size: 16px; border-radius: 6px;">
+		        </div>
+		        </div>
+
+				<div style="margin-top: 10px;">
+				  
+				  <button type="submit" class="btn btn-primary" 
+				          style="width: 100%; padding: 12px 0; font-size: 16px; font-weight: bold; border-radius: 6px; margin-bottom: 20px;">
+				    ログイン
+				  </button>
+
+				<div style="display: flex; justify-content: center; gap: 25px; font-size: 13px;">
+					<a href="/forgot-password" style="text-decoration: none; color: #888;">パスワードをお忘れの方</a>
+				    <span style="color: #ccc;">|</span> <a href="/signup" style="text-decoration: none; color: #337ab7; font-weight: bold;">新規会員登録</a>
+				</div>
+
+				</div>
+
+		        </div>
+
+		      </form>
+		</div>
+	</div>	
+</div>
