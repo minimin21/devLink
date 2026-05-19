@@ -4,22 +4,22 @@
 		<div class="sidebar-scroll">
 			<nav>
 				<ul class="nav">
-					<li><a href="/" class="active"><i class="lnr lnr-home"></i> <span>ホーム</span></a></li>
-					<li><a href="/dev/" class=""><i class="lnr lnr-magnifier"></i> <span>開発者検索</span></a></li>
+					<li><a th:href="@{/}" class="active"><i class="lnr lnr-home"></i> <span>ホーム</span></a></li>
+					<li><a th:href="@{/dev/}" class=""><i class="lnr lnr-magnifier"></i> <span>開発者検索</span></a></li>
 					<li>
 						<a href="#subPages-jobPosting" data-toggle="collapse" class="collapsed"><i class="lnr lnr-users"></i> <span>求人情報</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 						<div id="subPages-jobPosting" class="collapse ">
 							<ul class="nav">
-								<li><a href="/casting/" class=""><i class="lnr lnr-pie-chart"></i><span>プロジェクト募集</span></a></li>
-								<li><a href="/casting/" class=""><i class="lnr lnr-briefcase"></i><span>企業採用</span></a></li>
+								<li><a th:href="@{/casting/project}" class=""><i class="lnr lnr-pie-chart"></i><span>プロジェクト募集</span></a></li>
+								<li><a th:href="@{/casting/company}" class=""><i class="lnr lnr-briefcase"></i><span>企業採用</span></a></li>
 							</ul>
 						</div>
 					</li>
-					<li><a href="/community/" class=""><i class="lnr lnr-bubble"></i> <span>コミュニティ</span></a></li>
+					<li><a th:href="@{/community/}" class=""><i class="lnr lnr-bubble"></i> <span>コミュニティ</span></a></li>
 					
 					<!--管理者専用 -->
 					<li th:if="${role == 'ADMIN'}">
-						<a href="/admin/dashboard"><i class="lnr lnr-list"></i> <span>ユーザー管理</span></a>
+						<a th:href="@{/admin/dashboard}"><i class="lnr lnr-list"></i> <span>ユーザー管理</span></a>
 					</li>
 					
 				</ul>

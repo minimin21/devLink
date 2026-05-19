@@ -3,7 +3,7 @@
 	<!-- Header -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="brand">
-			<a href="index.html"><img src="/img/devLink-logo.png" alt="DevLink Logo" class="img-responsive logo"></a>
+			<a th:href="@{/}"><img src="/img/devLink-logo.png" alt="DevLink Logo" class="img-responsive logo"></a>
 		</div>
 		<div class="container-fluid">
 			<div id="navbar-menu">
@@ -27,10 +27,10 @@
 							
 							<!-- 個人ユーザーメニュー -->
 							<th:block th:if="${role == 'USER'}">
-							<li><a href="/personal/"><i class="lnr lnr-user"></i> <span>会員情報</span></a></li>
-							<li><a href="/personal/"><i class="lnr lnr-inbox"></i> <span>応募状況</span></a></li>
+							<li><a th:href="@{/personal/}"><i class="lnr lnr-user"></i> <span>会員情報</span></a></li>
+							<li><a th:href="@{/personal/}"><i class="lnr lnr-inbox"></i> <span>応募状況</span></a></li>
 							<li>
-								<a href="/personal/" style="display: flex; align-items: center;">
+								<a th:href="@{/personal/}" style="display: flex; align-items: center;">
 									<i class="lnr lnr-envelope"></i>
 									<span>メッセージ</span>
 									<span class="badge bg-danger" style="margin-left: auto;">5</span>
@@ -41,19 +41,19 @@
 							
 							<!-- 企業ユーザーメニュー -->
 							<th:block th:if="${role == 'COMPANY'}">
-								<li><a href="/company/"><i class="lnr lnr-briefcase"></i> <span>기업 대시보드(COMPANY)</span></a></li>
-								<li><a href="/company/"><i class="lnr lnr-pencil"></i> <span>구인 공고 등록</span></a></li>
+								<li><a th:href="@{/company/}"><i class="lnr lnr-briefcase"></i> <span>기업 대시보드(COMPANY)</span></a></li>
+								<li><a th:href="@{/company/}"><i class="lnr lnr-pencil"></i> <span>구인 공고 등록</span></a></li>
 							</th:block>
 							<!-- END 企業ユーザーメニュー -->
 	
 							<!-- 管理者メニュー -->
 							<th:block th:if="${role == 'ADMIN'}">
-								<li><a href="/admin/"><i class="lnr lnr-cog"></i> <span>관리자 설정(ADMIN)</span></a></li>
+								<li><a th:href="@{/admin/}"><i class="lnr lnr-cog"></i> <span>관리자 설정(ADMIN)</span></a></li>
 							</th:block>
 							<!-- END 管理者メニュー -->
 							
 							<li>
-								<a href="/logout">
+								<a th:href="@{/logout}">
 									<i class="lnr lnr-exit"></i> 
 									<span>ログアウト</span>
 								</a>
