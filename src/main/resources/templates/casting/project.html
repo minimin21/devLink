@@ -1,55 +1,77 @@
 <div th:fragment="projectContent">
+    <style>
+        .project-page-title {
+            margin-bottom: 20px;
+        }
 
-    <!-- 화면 제목 -->
-    <div class="row">
+        .project-page-title h2 {
+            margin-top: 0;
+        }
+
+        .project-skill-list .checkbox-inline,
+        .project-category-list .checkbox-inline {
+            margin-right: 12px;
+            margin-left: 0;
+        }
+
+        .project-search-divider {
+            margin: 15px 0;
+            border-top: 1px solid #ddd;
+        }
+
+        .project-detail-box {
+            border: 1px solid #ddd;
+            background-color: #fafafa;
+            padding: 15px;
+            min-height: 110px;
+            white-space: pre-line;
+        }
+
+        .project-modal-section {
+            margin-bottom: 15px;
+        }
+
+        .project-table th,
+        .project-table td {
+            white-space: nowrap;
+            vertical-align: middle !important;
+        }
+
+        .project-table th {
+            text-align: center;
+        }
+
+        .project-table td.text-center {
+            text-align: center;
+        }
+    </style>
+
+    <div class="row project-page-title">
         <div class="col-md-12">
             <h2>プロジェクト募集検索</h2>
-            <p>条件を入力して、募集中のプロジェクトを検索できます。</p>
+            <p class="text-muted">条件を入力して、募集中のプロジェクトを検索できます。</p>
         </div>
     </div>
 
-    <br>
-
-    <!-- 검색 조건 -->
     <div class="row">
         <div class="col-md-12">
-
             <div class="panel panel-default">
-
                 <div class="panel-heading">
                     <h3 class="panel-title">検索条件</h3>
                 </div>
-
                 <div class="panel-body">
-
                     <form action="#" method="get">
-
                         <div class="row">
-
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>プロジェクト名</label>
-                                    <input type="text" class="form-control" name="projectName" placeholder="プロジェクト名を入力">
+                                    <label for="searchProjectName">プロジェクト名</label>
+                                    <input type="text" class="form-control" id="searchProjectName" name="projectName">
                                 </div>
                             </div>
-
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>募集職種</label>
-                                    <select class="form-control" name="jobType">
-                                        <option value="">選択してください</option>
-                                        <option value="frontend">フロントエンド</option>
-                                        <option value="backend">バックエンド</option>
-                                        <option value="network">ネットワーク</option>
-                                        <option value="data">データ</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>必要経歴</label>
-                                    <select class="form-control" name="career">
+                                    <label for="searchCareer">必要経歴</label>
+                                    <select class="form-control" id="searchCareer" name="career">
                                         <option value="">選択してください</option>
                                         <option value="none">未経験可能</option>
                                         <option value="one">1年以上</option>
@@ -58,156 +80,505 @@
                                     </select>
                                 </div>
                             </div>
-
-                        </div>
-
-                        <div class="row">
-
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>状態</label>
-                                    <select class="form-control" name="status">
+                                    <label for="searchStatus">状態</label>
+                                    <select class="form-control" id="searchStatus" name="status">
                                         <option value="">選択してください</option>
                                         <option value="open">募集中</option>
                                         <option value="closed">募集終了</option>
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>募集人数</label>
-                                    <select class="form-control" name="recruitCount">
-                                        <option value="">選択してください</option>
-                                        <option value="1">1名</option>
-                                        <option value="2">2名</option>
-                                        <option value="3">3名以上</option>
-                                    </select>
-                                </div>
-                            </div>
-
                         </div>
 
-                        <hr>
+                        <hr class="project-search-divider">
 
                         <div class="row">
-
-                            <div class="col-md-4">
-                                <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="form-group project-category-list">
                                     <label>カテゴリ</label>
-                                    <select class="form-control" name="skillCategory">
-                                        <option value="">選択してください</option>
-                                        <option value="frontend">フロントエンド</option>
-                                        <option value="backend">バックエンド</option>
-                                        <option value="network">ネットワーク</option>
-                                        <option value="data">データ</option>
-                                    </select>
+                                    <div>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="frontend"> フロントエンド
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="backend"> バックエンド
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="network"> ネットワーク
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="data"> データ
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-md-8">
-                                <label>技術スタック</label>
-                                <div>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="skills" value="Java"> Java
-                                    </label>
-
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="skills" value="Python"> Python
-                                    </label>
-
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="skills" value="Spring"> Spring
-                                    </label>
-
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="skills" value="HTML/CSS"> HTML/CSS
-                                    </label>
-
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="skills" value="JavaScript"> JavaScript
-                                    </label>
-                                </div>
+                        <div class="form-group project-skill-list">
+                            <label>技術スタック</label>
+                            <div>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="skills" value="Java"> Java
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="skills" value="Python"> Python
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="skills" value="Spring"> Spring
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="skills" value="HTML/CSS"> HTML/CSS
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="skills" value="JavaScript"> JavaScript
+                                </label>
                             </div>
-
                         </div>
 
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary">検索</button>
                             <button type="reset" class="btn btn-default">リセット</button>
                         </div>
-
                     </form>
-
                 </div>
             </div>
-
         </div>
     </div>
 
-    <!-- 검색 결과 -->
     <div class="row">
         <div class="col-md-12">
-
             <div class="panel panel-default">
-
                 <div class="panel-heading">
                     <h3 class="panel-title">検索結果一覧</h3>
                 </div>
-
                 <div class="panel-body">
-
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>プロジェクト名</th>
-                                <th>募集職種</th>
-                                <th>必要経歴</th>
-                                <th>給与</th>
-                                <th>状態</th>
-                                <th>募集人数</th>
-                                <th>募集技術</th>
-                                <th class="text-center">詳細</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>ECサイト開発プロジェクト</td>
-                                <td>バックエンド</td>
-                                <td>1年以上</td>
-                                <td>300,000円 / 月</td>
-                                <td><span class="label label-success">募集中</span></td>
-                                <td>2名</td>
-                                <td>Java / Spring</td>
-                                <td class="text-center">
-                                    <a href="#" class="btn btn-info btn-sm">詳細</a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>予約管理システム開発</td>
-                                <td>フロントエンド</td>
-                                <td>未経験可能</td>
-                                <td>250,000円 / 月</td>
-                                <td><span class="label label-success">募集中</span></td>
-                                <td>1名</td>
-                                <td>HTML/CSS / JavaScript</td>
-                                <td class="text-center">
-                                    <a href="#" class="btn btn-info btn-sm">詳細</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="text-right">
-                        <a href="#" class="btn btn-primary">募集登録</a>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover project-table">
+                            <thead>
+                                <tr>
+                                    <th>プロジェクト名</th>
+                                    <th>カテゴリ</th>
+                                    <th>必要経歴</th>
+                                    <th>給与</th>
+                                    <th>状態</th>
+                                    <th>進行方式</th>
+                                    <th>募集技術</th>
+                                    <th class="text-center">詳細</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ECサイト開発プロジェクト</td>
+                                    <td>バックエンド</td>
+                                    <td>1年以上</td>
+                                    <td>300,000円 / 月</td>
+                                    <td><span class="label label-success">募集中</span></td>
+                                    <td>リモート</td>
+                                    <td>Java / Spring</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#projectDetailModal">詳細</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>予約管理システム開発</td>
+                                    <td>フロントエンド</td>
+                                    <td>未経験可能</td>
+                                    <td>250,000円 / 月</td>
+                                    <td><span class="label label-success">募集中</span></td>
+                                    <td>出社</td>
+                                    <td>HTML/CSS / JavaScript</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#projectDetailModal">詳細</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-
                 </div>
             </div>
-
+            <div class="text-right btn-area">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#projectRegisterModal">募集登録</button>
+            </div>
         </div>
     </div>
 
+    <div class="modal fade" id="projectRegisterModal" tabindex="-1" role="dialog" aria-labelledby="projectRegisterModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form action="#" method="post">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="projectRegisterModalLabel">プロジェクト募集</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="registerProjectName">プロジェクト名</label>
+                                    <input type="text" class="form-control" id="registerProjectName" name="projectName">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>開発期間</label>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <input type="date" class="form-control" name="startDate">
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <input type="date" class="form-control" name="endDate">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="registerWorkArea">勤務地域</label>
+                                    <input type="text" class="form-control" id="registerWorkArea" name="workArea" placeholder="直接入力可能">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="registerWorkType">勤務形態</label>
+                                    <input type="text" class="form-control" id="registerWorkType" name="workType" placeholder="直接入力可能">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>勤務時間</label>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <input type="time" class="form-control" name="startTime">
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <input type="time" class="form-control" name="endTime">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="registerSalary">給与</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="registerSalary" name="salary">
+                                        <span class="input-group-addon">円 / 月</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="registerOvertime">残業時間</label>
+                                    <input type="text" class="form-control" id="registerOvertime" name="overtime" placeholder="直接入力可能">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="registerCareer">必要経歴</label>
+                                    <select class="form-control" id="registerCareer" name="career">
+                                        <option value="">選択してください</option>
+                                        <option value="none">未経験可能</option>
+                                        <option value="one">1年以上</option>
+                                        <option value="three">3年以上</option>
+                                        <option value="five">5年以上</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="registerDeadline">募集締切日</label>
+                                    <input type="date" class="form-control" id="registerDeadline" name="deadline">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group project-category-list">
+                                    <label>カテゴリ</label>
+                                    <div>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="frontend"> フロントエンド
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="backend"> バックエンド
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="network"> ネットワーク
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="data"> データ
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group project-skill-list">
+                            <label>技術スタック</label>
+                            <div>
+                                <label class="checkbox-inline"><input type="checkbox" name="skills" value="Java"> Java</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="skills" value="Python"> Python</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="skills" value="Spring"> Spring</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="skills" value="HTML/CSS"> HTML/CSS</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="skills" value="JavaScript"> JavaScript</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerContent">プロジェクト内容</label>
+                            <textarea class="form-control" id="registerContent" name="content" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">登録</button>
+                        <button type="reset" class="btn btn-default">リセット</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="projectDetailModal" tabindex="-1" role="dialog" aria-labelledby="projectDetailModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="projectDetailModalLabel">プロジェクト詳細</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row project-modal-section">
+                        <div class="col-md-6">
+                            <strong>プロジェクト名</strong>
+                            <p>ECサイト開発プロジェクト</p>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>作成者</strong>
+                            <p>株式会社サンプル</p>
+                        </div>
+                    </div>
+                    <div class="row project-modal-section">
+                        <div class="col-md-4">
+                            <strong>募集状態</strong>
+                            <p><span class="label label-success">募集中</span></p>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>勤務地域</strong>
+                            <p>東京都</p>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>勤務形態</strong>
+                            <p>リモート</p>
+                        </div>
+                    </div>
+                    <div class="row project-modal-section">
+                        <div class="col-md-4">
+                            <strong>勤務時間</strong>
+                            <p>09:00 - 18:00</p>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>給与</strong>
+                            <p>300,000円 / 月</p>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>必要経歴</strong>
+                            <p>1年以上</p>
+                        </div>
+                    </div>
+                    <div class="row project-modal-section">
+                        <div class="col-md-4">
+                            <strong>残業時間</strong>
+                            <p>月10時間以内</p>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>カテゴリ</strong>
+                            <p>バックエンド</p>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>募集技術</strong>
+                            <p>Java / Spring</p>
+                        </div>
+                    </div>
+                    <div class="row project-modal-section">
+                        
+                        <div class="col-md-4">
+                            <strong>開発期間</strong>
+                            <p>2026-06-01 - 2026-09-30</p>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>募集締切日</strong>
+                            <p>2026-05-31</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <strong>内容</strong>
+                        <div class="project-detail-box">
+ECサイトのバックエンド機能を開発するプロジェクトです。
+JavaとSpringを使用し、注文管理や会員管理機能を担当します。
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">応募する</button>
+                    <button type="button" class="btn btn-warning" onclick="$('#projectDetailModal').modal('hide'); setTimeout(function(){ $('#projectEditModal').modal('show'); }, 300);">修正</button>
+                    <button type="button" class="btn btn-danger">削除</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="projectEditModal" tabindex="-1" role="dialog" aria-labelledby="projectEditModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form action="#" method="post">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="projectEditModalLabel">プロジェクト募集修正</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="editProjectName">プロジェクト名</label>
+                                    <input type="text" class="form-control" id="editProjectName" name="projectName" value="ECサイト開発プロジェクト">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>開発期間</label>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <input type="date" class="form-control" name="startDate" value="2026-06-01">
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <input type="date" class="form-control" name="endDate" value="2026-09-30">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="editWorkArea">勤務地域</label>
+                                    <input type="text" class="form-control" id="editWorkArea" name="workArea" value="東京都" placeholder="直接入力可能">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="editWorkType">勤務形態</label>
+                                    <input type="text" class="form-control" id="editWorkType" name="workType" value="リモート" placeholder="直接入力可能">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>勤務時間</label>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <input type="time" class="form-control" name="startTime" value="09:00">
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <input type="time" class="form-control" name="endTime" value="18:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="editSalary">給与</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="editSalary" name="salary" value="300000">
+                                        <span class="input-group-addon">円 / 月</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="editOvertime">残業時間</label>
+                                    <input type="text" class="form-control" id="editOvertime" name="overtime" value="月10時間以内" placeholder="直接入力可能">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="editCareer">必要経歴</label>
+                                    <select class="form-control" id="editCareer" name="career">
+                                        <option value="">選択してください</option>
+                                        <option value="none">未経験可能</option>
+                                        <option value="one" selected>1年以上</option>
+                                        <option value="three">3年以上</option>
+                                        <option value="five">5年以上</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="editDeadline">募集締切日</label>
+                                    <input type="date" class="form-control" id="editDeadline" name="deadline" value="2026-05-31">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group project-category-list">
+                                    <label>カテゴリ</label>
+                                    <div>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="frontend"> フロントエンド
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="backend" checked> バックエンド
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="network"> ネットワーク
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="data"> データ
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group project-skill-list">
+                            <label>技術スタック</label>
+                            <div>
+                                <label class="checkbox-inline"><input type="checkbox" name="skills" value="Java" checked> Java</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="skills" value="Python"> Python</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="skills" value="Spring" checked> Spring</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="skills" value="HTML/CSS"> HTML/CSS</label>
+                                <label class="checkbox-inline"><input type="checkbox" name="skills" value="JavaScript"> JavaScript</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editContent">プロジェクト内容</label>
+                            <textarea class="form-control" id="editContent" name="content" rows="5">ECサイトのバックエンド機能を開発するプロジェクトです。
+JavaとSpringを使用し、注文管理や会員管理機能を担当します。</textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">修正</button>
+                        <button type="reset" class="btn btn-default">リセット</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
