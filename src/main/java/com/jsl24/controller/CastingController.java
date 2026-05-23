@@ -12,4 +12,9 @@ public class CastingController {
         model.addAttribute("content", "casting/project :: projectContent");
         return "layout";
     }
+    @GetMapping("/casting/company")
+    public String companySearch(Model model) {
+        model.addAttribute("content", "casting/company :: companyContent");
+        return "layout";
+    }
 }
