@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/vendor/linearicons/style.css">
     <link rel="stylesheet" href="/vendor/chartist/css/chartist-custom.css">
     <link rel="stylesheet" href="/css/main.css">
+    <link th:if="${pageCss == 'personal-register'}" rel="stylesheet" th:href="@{/css/personal-register.css}">
     
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
@@ -44,7 +45,8 @@
   <script src="/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
   <script src="/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
   <script src="/vendor/chartist/js/chartist.min.js"></script>
-  <script src="/scripts/klorofil-common.js"></script>
+  <script src="/js/klorofil-common.js"></script>
+  <script th:if="${pageScript == 'personal-register'}" th:src="@{/js/personal-register.js}"></script>
 
 </body>
 </html>

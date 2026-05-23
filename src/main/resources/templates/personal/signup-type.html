@@ -1,0 +1,29 @@
+<div th:fragment="signupTypeContent">
+  <div class="panel panel-headline">
+    <div class="panel-heading">
+      <h3 class="panel-title">新規会員登録</h3>
+      <p class="panel-subtitle">登録する会員の種類を選んでください。</p>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6" style="margin-bottom:20px;">
+          <a th:href="@{/signup/personal}" class="signup-type-card">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <h4>個人会員</h4>
+            <p>開発者・フリーランスとして登録します。</p>
+          </a>
+        </div>
+        <div class="col-md-6" style="margin-bottom:20px;">
+          <a th:href="@{/signup/company}" class="signup-type-card">
+            <i class="fa fa-building" aria-hidden="true"></i>
+            <h4>企業会員</h4>
+            <p>採用・案件募集のため企業として登録します。</p>
+          </a>
+        </div>
+      </div>
+      <p class="text-muted" style="margin-top:10px; font-size:13px;">
+        <a th:href="@{/}">ホームに戻る</a>
+      </p>
+    </div>
+  </div>
+</div>
