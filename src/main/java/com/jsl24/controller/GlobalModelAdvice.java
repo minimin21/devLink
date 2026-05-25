@@ -20,7 +20,6 @@ public class GlobalModelAdvice {
         return role != null ? role.toString() : "GUEST";
     }
 
-    /** layout.html の条件付き CSS/JS 用（未設定コントローラでは空） */
     @ModelAttribute("pageCss")
     public String pageCss() {
         return "";

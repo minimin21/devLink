@@ -4,14 +4,14 @@
     else document.addEventListener('DOMContentLoaded', fn);
   }
 
-  ready(function () {
-    var input = document.getElementById('profilePhotoInput');
-    var preview = document.getElementById('profilePhotoPreview');
-    var clearBtn = document.getElementById('profilePhotoClear');
-    if (!input || !preview || !clearBtn) return;
+  var emptyGif =
+    'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
-    var emptyGif =
-      'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+  function bindImagePreview(inputId, previewId, clearBtnId) {
+    var input = document.getElementById(inputId);
+    var preview = document.getElementById(previewId);
+    var clearBtn = document.getElementById(clearBtnId);
+    if (!input || !preview || !clearBtn) return;
 
     function setPreviewFromFile(file) {
       if (!file || !file.type.match(/^image\//)) return;
@@ -38,5 +38,10 @@
       preview.src = emptyGif;
       preview.classList.remove('has-image');
     });
+  }
+
+  ready(function () {
+    bindImagePreview('profilePhotoInput', 'profilePhotoPreview', 'profilePhotoClear');
+    bindImagePreview('companyLogoInput', 'companyLogoPreview', 'companyLogoClear');
   });
 })();

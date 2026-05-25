@@ -28,14 +28,12 @@ public class SignupController {
 
 	@GetMapping("/signup/company")
 	public String signupCompany(Model model) {
-		model.addAttribute("content", "company/signup-placeholder :: companySignupPlaceholderContent");
+		model.addAttribute("content", "company/register :: companyRegisterContent");
 		model.addAttribute("pageCss", "personal-register");
+		model.addAttribute("pageScript", "personal-register");
 		return "layout";
 	}
 
-	/**
-	 * DB 未接続のため入力は保存しません。接続後にサービス層へ委譲してください。
-	 */
 	@PostMapping("/signup/personal")
 	public String signupPersonalSubmit(
 			@RequestParam(required = false) MultipartFile profileImage,
@@ -49,5 +47,20 @@ public class SignupController {
 		redirectAttributes.addFlashAttribute("infoMessage",
 				"現在はデモのため、入力内容はデータベースに保存されていません。");
 		return "redirect:/signup/personal";
+	}
+
+	@PostMapping("/signup/company")
+	public String signupCompanySubmit(
+			@RequestParam(required = false) MultipartFile logoImage,
+			RedirectAttributes redirectAttributes) {
+
+		if (logoImage != null && !logoImage.isEmpty() && logoImage.getSize() > 5 * 1024 * 1024) {
+			redirectAttributes.addFlashAttribute("infoMessage", "企業ロゴ画像は 5MB 以下にしてください。");
+			return "redirect:/signup/company";
+		}
+
+		redirectAttributes.addFlashAttribute("infoMessage",
+				"現在はデモのため、入力内容はデータベースに保存されていません。");
+		return "redirect:/signup/company";
 	}
 }
