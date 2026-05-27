@@ -1,10 +1,99 @@
 <div th:fragment="projectContent">
+	<style>
+	    /* 검색바 전체 레이아웃 (독립된 행에서 중앙 정렬) */
+	    .dev_search_zone {
+	        max-width:900px;
+	        margin: 10px auto 20px auto; /* 중앙 배치 및 아래 조건들과의 여백(30px) */
+	        text-align: center;
+	    }
+	    
+	    /* 프로젝트명 라벨 스타일 */
+	    .dev_search_label {
+	        display: block;
+	        font-size: 16px;
+	        font-weight: 600;
+	        margin-bottom: 10px;
+	    }
 
+	    /* 입력창과 버튼을 가로로 정렬해주는 그룹 */
+	    .dev_search_group {
+	        display: table;
+	        width: 100%;
+	    }
+
+	    /* 입력창 커스텀 (Klorofil 기본 .form-control 스타일 확장) */
+	    .dev_search_input {
+	        display: table-cell;
+	        width: 100%;
+	        height: 46px;
+	        padding: 10px 15px;
+	        font-size: 15px;
+	        background-color: #fcfcfc;
+	        border: 1px solid #676a6d;
+	        border-radius: 3px 0 0 3px !important; /* 왼쪽만 라운딩 */
+	    }
+	    
+	    .dev_search_input:focus {
+	        background-color: #fff;
+	        border-color: #eaeaea;
+	        outline: none;
+	    }
+
+	    /* 우측 버튼 감싸는 영역 */
+	    .dev_search_btn_wrap {
+	        display: table-cell;
+	        vertical-align: middle;
+	        width: 1%;
+	        white-space: nowrap;
+	    }
+
+	    /* 오른쪽 끝 검색 버튼 (Klorofil 테마 컬러 매칭) */
+	    .dev_search_btn {
+	        height: 46px;
+	        padding: 0 25px;
+	        font-size: 15px;
+	        color: #fff;
+	        background-color: #676a6d;
+	        border: 1px solid #676a6d;
+	        border-radius: 0 3px 3px 0 !important; /* 오른쪽만 라운딩 */
+	        cursor: pointer;
+	    }
+	    
+	    .dev_search_btn:hover {
+	        background-color: rgb(71, 72, 73)
+	    }
+		.member_type{
+			margin-left:200px;
+		}
+		
+		
+		.skill input[type="checkbox"] {
+		    display: none; 
+		}
+		
+		.skill span {
+			margin-left:10px;
+		    display: inline-block;
+		    padding: 6px 25px;
+		    background-color: #eaeaea;
+		    color: #676a6d;
+		    border-radius: 30px;
+		    transition: all 0.2s ease;
+		}
+		.skill:hover span {
+		    background-color: rgb(171, 173, 175);
+		    color: #fff;
+		}
+		.skill input[type="checkbox"]:checked + span {
+		    background-color: #676a6d;
+		    color: #ffffff;           
+		    font-weight: bold;
+		}
+	</style>
     <!-- 화면 제목 -->
     <div class="row">
         <div class="col-md-12">
-            <h2>プロジェクト募集検索</h2>
-            <p>条件を入力して、募集中のプロジェクトを検索できます。</p>
+            <h2>開発者検索</h2>
         </div>
     </div>
 
@@ -23,113 +112,193 @@
                 <div class="panel-body">
 
                     <form action="#" method="get">
+						<div class="row">
+						   <div class="col-md-12">
+						     <div class="dev_search_zone">
+						     <div class="dev_search_group">
+						      <input type="text" class="dev_search_input" name="projectName" placeholder="名前及び会社名を入力してください">
+						       <span class="dev_search_btn_wrap">
+						         <button type="submit" class="dev_search_btn">
+						          	<i class="fa fa-search"></i> 検索
+						         </button>
+						       </span>
+						     </div>
+						 	</div>
+						  </div>
+						</div>
+						<div class="row">
+						    <div class="member_type">
+						        
+						        <label style="margin-right: 100px;">
+						            <input type="radio" name="memberType" value="individual">
+						            <span><i></i>個人</span>
+						        </label>
+						        
+						        <label style="margin-right: 100px;">
+						            <input type="radio" name="memberType" value="company">
+						            <span><i></i>企業</span>
+						        </label>
+						    </div>
+						</div>
+                        </div>
 
                         <div class="row">
-
+							<div class="form-inline">
                             <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>プロジェクト名</label>
-                                    <input type="text" class="form-control" name="projectName" placeholder="プロジェクト名を入力">
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>募集職種</label>
-                                    <select class="form-control" name="jobType">
+                                <div class="form-inline" style="margin-left: 150px;">
+                                    <label>学歴</label>
+                                    <select name="edu" style="margin-left: 20px;width: 150px;">
                                         <option value="">選択してください</option>
-                                        <option value="frontend">フロントエンド</option>
-                                        <option value="backend">バックエンド</option>
-                                        <option value="network">ネットワーク</option>
-                                        <option value="data">データ</option>
+                                        <option value="">高校卒業</option>
+                                        <option value="">短大卒業</option>
+                                        <option value="">大学卒業</option>
+                                        <option value="">大学院卒業</option>
+                                        <option value="">卒業見込み</option>
+                                        <option value="">中退</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>必要経歴</label>
-                                    <select class="form-control" name="career">
-                                        <option value="">選択してください</option>
-                                        <option value="none">未経験可能</option>
-                                        <option value="one">1年以上</option>
-                                        <option value="three">3年以上</option>
-                                        <option value="five">5年以上</option>
-                                    </select>
+                                   <div class="form-inline" style="margin-left: 40px;">
+									<label>経歴</label>
+									<select name="exp" style="margin-left: 20px;width: 150px;">
+									    <option value="">選択してください</option>
+									    <option value="">未経験</option>
+									    <option value="">実務経験1年以上</option>
+									    <option value="">実務経験3年以上</option>
+									    <option value="">実務経験5年以上</option>
+									</select>
                                 </div>
                             </div>
 
                         </div>
+						</div>
 
                         <div class="row">
 
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>状態</label>
-                                    <select class="form-control" name="status">
-                                        <option value="">選択してください</option>
-                                        <option value="open">募集中</option>
-                                        <option value="closed">募集終了</option>
-                                    </select>
-                                </div>
-                            </div>
+							<div class="col-md-4">
+							       <div class="form-inline" style="margin-left: 145px;margin-top:10px;">
+									<label>勤務形態</label>
+									<select name="exp" style="margin-left: 20px;width: 150px;">
+									    <option value="">選択してください</option>
+									    <option value="">正社員</option>
+									    <option value="">契約社員</option>
+									    <option value="">派遣社員</option>
+									    <option value="">実務経験5年以上</option>
+									</select>
+							    </div>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 10px;margin-left: 130px;">
+						    <div class="col-md-12">
+						        <div class="form-group">
+						            <label>希望給与 (月収)</label>
+						            
+						            <div style="width:500px;  align-items: center; gap: 15px;">
+										
+						                <input type="range" id="salaryRange" name="salaryRange" 
+						                       min="100000" max="1000000" step="10000" value="300000" 
+						                       style="margin-top:10px;flex: 1; height: 8px; cursor: pointer;">
+										
+						                <div style="margin-top:15px;width: 150px; display: flex; align-items: center;">
+						                    <input type="text" id="salaryDisplay" class="form-control" 
+						                           style="text-align: right; font-weight: bold; background-color: #fff;" readonly>
+						                    <span style="margin-left: 5px; font-weight: 600;">円</span>
+											
+						                </div>
+										
+						            </div>
+				
+								</div>
+								<label style="font-size: 14px;">
+										<input type="radio" name="salaryType" value="" >
+											<span style="vertical-align: middle; margin-left: 3px;">協議の上決定</span>
+								</label>
+						    </div>
+						</div>
 
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>募集人数</label>
-                                    <select class="form-control" name="recruitCount">
-                                        <option value="">選択してください</option>
-                                        <option value="1">1名</option>
-                                        <option value="2">2名</option>
-                                        <option value="3">3名以上</option>
-                                    </select>
-                                </div>
-                            </div>
+						<script>
+						    document.addEventListener("DOMContentLoaded", function() {
+						        const salaryRange = document.getElementById('salaryRange');
+						        const salaryDisplay = document.getElementById('salaryDisplay');
+						        const currencyUnit = document.getElementById('currencyUnit');
+						        const salaryRadios = document.querySelectorAll('input[name="salaryType"]');
 
-                        </div>
+						        // 숫자에 3자리마다 콤마(,)를 찍어주는 함수
+						        function formatNumber(num) {
+						            return Number(num).toLocaleString();
+						        }
 
-                        <hr>
+						        // 슬라이더 값이 변경될 때마다 박스에 출력하는 함수
+						        function updateSalary() {
+						            salaryDisplay.value = formatNumber(salaryRange.value);
+						        }
 
-                        <div class="row">
+						        // 라디오 버튼 상태에 따라 UI를 활성화/비활성화 하는 함수
+						        function handleSalaryTypeChange() {
+						            const selectedType = document.querySelector('input[name="salaryType"]:checked').value;
 
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>カテゴリ</label>
-                                    <select class="form-control" name="skillCategory">
-                                        <option value="">選択してください</option>
-                                        <option value="frontend">フロントエンド</option>
-                                        <option value="backend">バックエンド</option>
-                                        <option value="network">ネットワーク</option>
-                                        <option value="data">データ</option>
-                                    </select>
-                                </div>
-                            </div>
+						            if (selectedType === 'negotiable') {
+						                // '협의 후 결정' 선택 시
+						                salaryRange.disabled = true;
+						                salaryDisplay.disabled = true;
+						                salaryDisplay.value = "협의 후 결정"; // 박스에 텍스트 표시
+						                salaryDisplay.style.textAlign = "center";
+						                salaryDisplay.style.backgroundColor = "#eee"; // 비활성화 느낌의 배경색
+						                currencyUnit.style.opacity = "0.5";           // 단위 흐리게
+						            } else {
+						                // '금액 지정' 선택 시 (원래대로 복구)
+						                salaryRange.disabled = false;
+						                salaryDisplay.disabled = false;
+						                salaryDisplay.style.textAlign = "right";
+						                salaryDisplay.style.backgroundColor = "#fff";
+						                currencyUnit.style.opacity = "1";
+						                updateSalary(); // 현재 슬라이더 값으로 재설정
+						            }
+						        }
 
-                            <div class="col-md-8">
+						        // 초기값 설정
+						        updateSalary();
+
+						        // 이벤트 리스너 등록
+						        salaryRange.addEventListener('input', updateSalary);
+						        
+						        salaryRadios.forEach(radio => {
+						            radio.addEventListener('change', handleSalaryTypeChange);
+						        });
+						    });
+						</script>
+                            <div class="row">
+								<div style="margin-left:200px;margin-top:20px;">
                                 <label>技術スタック</label>
                                 <div>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="skills" value="Java"> Java
+                                    <label class="skill">
+                                        <input type="checkbox" name="skills" value="Java"> 
+										<span>Java</span>
                                     </label>
 
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="skills" value="Python"> Python
+                                    <label class="skill">
+                                        <input type="checkbox" name="skills" value="Python">
+										<span>Python</span>
                                     </label>
 
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="skills" value="Spring"> Spring
+                                    <label class="skill">
+                                        <input type="checkbox" name="skills" value="Spring">
+										<span>Spring</span>
                                     </label>
 
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="skills" value="HTML/CSS"> HTML/CSS
+                                    <label class="skill">
+                                        <input type="checkbox" name="skills" value="HTML/CSS">
+										<span>HTML/CSS</span>
                                     </label>
 
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="skills" value="JavaScript"> JavaScript
+                                    <label class="skill">
+                                        <input type="checkbox" name="skills" value="JavaScript">
+										<span>JavaScript</span>
                                     </label>
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="text-right">
