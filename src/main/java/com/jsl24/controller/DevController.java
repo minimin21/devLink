@@ -8,8 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DevController {
 
     @GetMapping("/dev/devIndex")
-    public String projectSearch(Model model) {
+    public String devIndex(Model model) {
         model.addAttribute("content", "dev/devIndex");
         return "layout";
     }
+    @GetMapping("/dev/devView")
+    public String devView(Model model) {
+        model.addAttribute("content", "dev/devView");
+        return "layout";
+    }
+
 }
