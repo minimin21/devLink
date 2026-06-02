@@ -1,11 +1,39 @@
 <div th:fragment="projectContent">
 	<style>
 	   .dev_image{
-		padding:30px 80px;
+		background-color: antiquewhite;
+		margin: 0 auto;
+		width:140px;
+		height: 180px;
 		text-align: center;
+		padding: 20px;
+		margin-top: 20px;
 	   }
 	   .t_dev{
 		text-align: center;
+	   }
+	   table{
+		margin-top:20px;
+		background-color: aqua;
+		width: 800px;
+		margin:0 auto;
+	   }
+	   
+	   table th, table td{
+		text-align: center;
+		padding: 20px;
+		
+	   }
+	   .icon{
+		background-color: antiquewhite;
+		width: 30px;
+		height: 30px;
+	   }
+	   .dev_name{
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: 15px;
+		font-weight: 600;
+		color: #676a6d;
 	   }
 	</style>
     <!-- 화면 제목 -->
@@ -36,14 +64,15 @@
 							</div>
 						</div>
 						<div class="t_dev">
-						
-							<tr>
-							    <th>ジン　リス</th>
-							</tr>
-							<tr>
-								<th><input type="image"></th>
-							    <td>女性</td>
-							</tr>
+							<table>
+								<tr class="dev_name">
+								    ジン　リス
+								</tr>
+								<tr>
+									<th><input type="image" class="icon"></th>
+								    <td>女性</td>
+								</tr>
+							</table>
 						</div>
                     </form>
 
