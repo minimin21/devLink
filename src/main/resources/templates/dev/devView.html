@@ -15,25 +15,32 @@
 	   table{
 		margin-top:20px;
 		background-color: aqua;
-		width: 800px;
+		width: auto;
 		margin:0 auto;
 	   }
-	   
-	   table th, table td{
-		text-align: center;
-		padding: 20px;
-		
-	   }
-	   .icon{
+		.icon{
 		background-color: antiquewhite;
 		width: 30px;
 		height: 30px;
 	   }
+	   .big_icon{
+	   background-color: antiquewhite;
+	   width: 50px;
+	   height: 50px;
+	   }
 	   .dev_name{
+		text-align: center;
 		font-family: "Source Sans Pro", sans-serif;
-		font-size: 15px;
+		font-size: 30px;
 		font-weight: 600;
 		color: #676a6d;
+		padding: 30px;
+	   }
+	   .t_dev table th{
+		padding: 5px;
+	   }
+	   .t_dev table td{
+		margin-left:50px;
 	   }
 	</style>
     <!-- 화면 제목 -->
@@ -65,12 +72,58 @@
 						</div>
 						<div class="t_dev">
 							<table>
-								<tr class="dev_name">
-								    ジン　リス
+								<colgroup width="800px;">
+									<col style="width:10%">
+									<col style="width:15%">
+									<col style="width:10%">
+									<col style="width:15%">
+									<col style="width:10%">
+									<col style="width:15%">
+								</colgroup>
+								<tr>
+								   <th colspan="6" class="dev_name">ジン　リス</th>
 								</tr>
 								<tr>
+									<th><input type="image" class="icon" style="margin-left: 30px;"></th>
+								    <th>女性</th>
 									<th><input type="image" class="icon"></th>
-								    <td>女性</td>
+								    <th>1997年3月14日</th>
+									<th><input type="image" class="icon"></th>
+								    <th>韓国　青洲市</td>
+								</tr>
+								<tr>
+									<th><input type="image" class="icon" style="margin-left: 30px;"></th>
+								    <th>010-1234-1234</th>
+									<th><input type="image" class="icon"></th>
+								    <th>jrs8975@naver.com</th>
+								</tr>
+							</table>
+							<table>
+								<colgroup width="800px;">
+									<col style="width:10%">
+									<col style="width:20%">
+									<col style="width:50%">
+								</colgroup>
+							
+								<tr>
+									<th colspan="2" style="font-size: 20px;padding: 30px;margin-left:10px;">
+										学歴
+									</th>
+								</tr>
+								<tr>
+									<th><input type="image" class="big_icon" style="margin-left: 30px;"></th>
+								    <th>JSL人材開発院</th>
+								    <th>WEB　開発</th>
+								</tr>
+								<tr>
+									<th></th>
+									<th>卒業</th>
+									<th>2025.05~2026.02</th>
+								</tr>
+								<tr>
+									<th colspan="2" style="font-size: 20px;padding: 30px;margin-left:10px;">
+										経歴
+									</th>
 								</tr>
 							</table>
 						</div>
