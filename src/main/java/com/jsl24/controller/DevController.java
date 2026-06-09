@@ -17,5 +17,10 @@ public class DevController {
         model.addAttribute("content", "dev/devView");
         return "layout";
     }
+    @GetMapping("/dev/projectView")
+    public String projectView(Model model) {
+        model.addAttribute("content", "dev/projectView");
+        return "layout";
+    }
 
 }
