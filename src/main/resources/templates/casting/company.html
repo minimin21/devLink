@@ -1,0 +1,376 @@
+<div th:fragment="companyContent">
+    <style>
+        .company-page-title {
+            margin-bottom: 20px;
+        }
+
+        .company-page-title h2 {
+            margin-top: 0;
+        }
+
+        .company-skill-list .checkbox-inline,
+        .company-category-list .checkbox-inline {
+            margin-right: 12px;
+            margin-left: 0;
+        }
+
+        .company-search-divider {
+            margin: 15px 0;
+            border-top: 1px solid #ddd;
+        }
+
+        .company-table th,
+        .company-table td {
+            white-space: nowrap;
+            vertical-align: middle !important;
+        }
+
+        .company-table th {
+            text-align: center;
+        }
+
+        .company-table td.text-center {
+            text-align: center;
+        }
+
+        .company-modal-section {
+            margin-bottom: 15px;
+        }
+    </style>
+
+    <div class="row company-page-title">
+        <div class="col-md-12">
+            <h2>企業採用検索</h2>
+            <p class="text-muted">条件を入力して、募集中の企業採用情報を検索できます。</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">検索条件</h3>
+                </div>
+                <div class="panel-body">
+                    <form action="#" method="get">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="searchCompanyName">企業名</label>
+                                    <input type="text" class="form-control" id="searchCompanyName" name="companyName">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="searchCareer">必要経歴</label>
+                                    <select class="form-control" id="searchCareer" name="career">
+                                        <option value="">全体を選択してください</option>
+                                        <option value="none">未経験可</option>
+                                        <option value="one">1年以上</option>
+                                        <option value="three">3年以上</option>
+                                        <option value="five">5年以上</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="searchStatus">状態</label>
+                                    <select class="form-control" id="searchStatus" name="status">
+                                        <option value="">全体を選択してください</option>
+                                        <option value="open">募集中</option>
+                                        <option value="closed">募集終了</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="company-search-divider">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group company-category-list">
+                                    <label>カテゴリ</label>
+                                    <div>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="frontend"> フロントエンド
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="backend"> バックエンド
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="network"> ネットワーク
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="category" value="data"> データ
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group company-skill-list">
+                            <label>技術スタック</label>
+                            <div>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="skills" value="Java"> Java
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="skills" value="Python"> Python
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="skills" value="Spring"> Spring
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="skills" value="HTML/CSS"> HTML/CSS
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="skills" value="JavaScript"> JavaScript
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary">検索</button>
+                            <button type="reset" class="btn btn-default">リセット</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">検索結果一覧</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover company-table">
+                            <thead>
+                                <tr>
+                                    <th>企業名</th>
+                                    <th>カテゴリ</th>
+                                    <th>必要経歴</th>
+                                    <th>給与</th>
+                                    <th>状態</th>
+                                    <th>募集人数</th>
+                                    <th>進行方式</th>
+                                    <th>募集技術</th>
+                                    <th class="text-center">詳細</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>株式会社ミライテック</td>
+                                    <td>バックエンド</td>
+                                    <td>3年以上</td>
+                                    <td>350,000円 / 月</td>
+                                    <td><span class="label label-success">募集中</span></td>
+                                    <td>2名</td>
+                                    <td>オンライン</td>
+                                    <td>Java / Spring</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-info btn-sm">詳細</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Next Data Solutions</td>
+                                    <td>データ</td>
+                                    <td>1年以上</td>
+                                    <td>300,000円 / 月</td>
+                                    <td><span class="label label-success">募集中</span></td>
+                                    <td>1名</td>
+                                    <td>対面</td>
+                                    <td>Python</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-info btn-sm">詳細</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Web Create Japan</td>
+                                    <td>フロントエンド</td>
+                                    <td>未経験可</td>
+                                    <td>250,000円 / 月</td>
+                                    <td><span class="label label-default">募集終了</span></td>
+                                    <td>3名</td>
+                                    <td>オンライン</td>
+                                    <td>HTML/CSS / JavaScript</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-info btn-sm">詳細</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right btn-area">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#companyRegisterModal">募集登録</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="companyRegisterModal" tabindex="-1" role="dialog" aria-labelledby="companyRegisterModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form action="#" method="post" onsubmit="alert('登録しました'); return false;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="companyRegisterModalLabel">企業採用募集登録</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="company-modal-section">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="registerCompanyName">企業名</label>
+                                        <input type="text" class="form-control" id="registerCompanyName" name="companyName" value="株式会社ミライテック" readonly>
+                                        <p class="help-block">会社名（修正不可）</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="registerStartDate">入社予定日</label>
+                                        <input type="date" class="form-control" id="registerStartDate" name="startDate">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="registerDeadline">募集締切日</label>
+                                        <input type="date" class="form-control" id="registerDeadline" name="deadline">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="company-modal-section">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="registerWorkRegion">勤務地域</label>
+                                        <input type="text" class="form-control" id="registerWorkRegion" name="workRegion" placeholder="例）東京">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="registerWorkType">勤務形態</label>
+                                        <input type="text" class="form-control" id="registerWorkType" name="workType" placeholder="例）オンライン / 対面">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>勤務時間</label>
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <input type="time" class="form-control" name="workStartTime">
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <input type="time" class="form-control" name="workEndTime">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="company-modal-section">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="registerSalary">給与</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="registerSalary" name="salary">
+                                            <span class="input-group-addon">円 / 月</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="registerOvertime">残業時間</label>
+                                        <input type="text" class="form-control" id="registerOvertime" name="overtime" placeholder="例）月10時間">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="registerRecruitCount">募集人数</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="registerRecruitCount" name="recruitCount">
+                                            <span class="input-group-addon">名</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="registerCareer">必要経歴</label>
+                                        <input type="text" class="form-control" id="registerCareer" name="career" placeholder="例）3年以上">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="company-search-divider">
+
+                        <div class="company-modal-section">
+                            <div class="form-group company-category-list">
+                                <label>募集技術 - カテゴリ</label>
+                                <div>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="registerCategory" value="frontend"> フロントエンド
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="registerCategory" value="backend"> バックエンド
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="registerCategory" value="network"> ネットワーク
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="registerCategory" value="data"> データ
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="company-modal-section">
+                            <div class="form-group company-skill-list">
+                                <label>募集技術 - 技術スタック</label>
+                                <div>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="registerSkills" value="JAVA"> JAVA
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="registerSkills" value="Python"> Python
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="registerSkills" value="Spring"> Spring
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="registerSkills" value="HTML/CSS"> HTML/CSS
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="registerSkills" value="JavaScript"> JavaScript
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="company-modal-section">
+                            <div class="form-group">
+                                <label for="registerCompanyDescription">会社説明</label>
+                                <textarea class="form-control" id="registerCompanyDescription" name="companyDescription" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">登録</button>
+                        <button type="reset" class="btn btn-default">リセット</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
